@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bgDark: #030014;
+  --color-cardDark: rgba(255, 255, 255, 0.02);
+  --color-borderDark: rgba(255, 255, 255, 0.08);
+  --color-accentBlue: #38bdf8;
+  --color-accentPurple: #a855f7;
+  --color-accentNavy: #1e1b4b;
+
+  --animate-grid-move: gridMove 30s linear infinite;
+  --animate-slow-spin: spin 120s linear infinite;
+  --animate-slow-spin-reverse: spin-reverse 120s linear infinite;
+  --animate-float-slow: floatSlow 8s ease-in-out infinite;
+  --animate-float-medium: floatMedium 6s ease-in-out infinite;
+  --animate-pulse-glow: pulseGlow 4s ease-in-out infinite;
+  --animate-shimmer: shimmer 2.5s linear infinite;
+
+  @keyframes gridMove {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(40px); }
+  }
+  @keyframes spin-reverse {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+  }
+  @keyframes floatSlow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+  }
+  @keyframes floatMedium {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(-2deg); }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+  }
+  @keyframes shimmer {
+    100% { transform: translateX(100%); }
+  }
+}
+
+/* Base Styles */
+html {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #030014;
+  color: #f1f5f9;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #030014;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.2);
+  border-radius: 9999px;
+  border: 2px solid #030014;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.5);
+}
+
+/* Premium Text Gradients */
+.text-gradient-blue-purple {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-blue-500 to-violet-500;
+}
+
+.text-gradient-purple-pink {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-purple-500 to-pink-500;
+}
+
+.text-gradient-silver {
+  @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400;
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(124, 58, 237, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.15);
+}
+
+/* Animated Border Hover */
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(to right, transparent, rgba(56, 189, 248, 0.5), rgba(168, 85, 247, 0.5), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.glow-border:hover::before {
+  opacity: 1;
+}
+
+/* Background Grid Overlay style */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Radial Glow Circles */
+.glow-orb {
+  filter: blur(120px);
+  border-radius: 9999px;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.15;
+  mix-blend-mode: screen;
+}
+
+/* Animation triggers */
+.transition-all-custom {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
