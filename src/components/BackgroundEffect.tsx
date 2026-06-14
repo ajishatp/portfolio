@@ -29,7 +29,7 @@ export const BackgroundEffect: React.FC = () => {
   if (!mounted) return null;
 
   return (
-    <div className="fixed inset-0 -z-50 w-full h-full overflow-hidden bg-[#030014] select-none pointer-events-none">
+    <div className="fixed inset-0 -z-50 w-full h-full overflow-hidden bg-bg-theme transition-colors duration-300 select-none pointer-events-none">
       {/* Moving Background Grid */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.06] animate-grid-move" />
 
@@ -49,7 +49,7 @@ export const BackgroundEffect: React.FC = () => {
 
       {/* Desktop Mouse Tracking Glow (Only displays on devices that support mouse pointer hover) */}
       <motion.div
-        className="hidden md:block absolute w-[400px] h-[400px] rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-[80px] pointer-events-none mix-blend-screen"
+        className="hidden md:block absolute w-[400px] h-[400px] rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-[80px] pointer-events-none mix-blend-multiply dark:mix-blend-screen"
         style={{
           x: glowX,
           y: glowY,
@@ -57,7 +57,7 @@ export const BackgroundEffect: React.FC = () => {
       />
 
       {/* Fine-grain vignette overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_0%,#030014_80%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_0%,var(--bg-theme)_80%)]" />
     </div>
   );
 };

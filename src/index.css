@@ -187,8 +187,8 @@ body {
   border-radius: 9999px;
   position: absolute;
   pointer-events: none;
-  opacity: 0.15;
-  mix-blend-mode: screen;
+  opacity: 0.25;
+  mix-blend-mode: multiply;
 }
 
 .dark .glow-orb {

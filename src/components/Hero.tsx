@@ -92,14 +92,14 @@ export const Hero: React.FC = () => {
               onClick={() => handleScrollToSection('#projects')}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-md shadow-blue-500/10 hover:shadow-blue-500/25 active:scale-98 cursor-pointer"
             >
-              View Projects &darr;
+              View Projects ↓
             </button>
 
             <button
               onClick={() => handleScrollToSection('#contact')}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-card-border bg-card-bg hover:bg-stone-100 dark:hover:bg-white/5 text-stone-700 dark:text-slate-200 font-semibold text-sm transition-all active:scale-98 cursor-pointer shadow-sm"
             >
-              Get in Touch &nearr;
+              Get in Touch ↗
             </button>
           </motion.div>
 
