@@ -33,18 +33,18 @@ export const BackgroundEffect: React.FC = () => {
       {/* Moving Background Grid */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.06] animate-grid-move" />
 
-      {/* Radiant glow spots that stay fixed */}
+      {/* Radiant glow spots that stay fixed (extremely subtle for professional feel) */}
       <div 
-        className="glow-orb bg-indigo-600/20 w-[500px] h-[500px] -left-40 top-20 animate-pulse-glow" 
-        style={{ animationDuration: '6s' }}
+        className="glow-orb bg-blue-600/10 dark:bg-blue-600/5 w-[500px] h-[500px] -left-40 top-20 animate-pulse-glow" 
+        style={{ animationDuration: '8s' }}
       />
       <div 
-        className="glow-orb bg-purple-600/15 w-[600px] h-[600px] -right-20 -top-20 animate-pulse-glow" 
+        className="glow-orb bg-indigo-600/5 dark:bg-indigo-600/5 w-[600px] h-[600px] -right-20 -top-20 animate-pulse-glow" 
+        style={{ animationDuration: '10s' }}
+      />
+      <div 
+        className="glow-orb bg-sky-600/5 dark:bg-sky-600/5 w-[500px] h-[500px] left-1/3 bottom-10 animate-pulse-glow" 
         style={{ animationDuration: '9s' }}
-      />
-      <div 
-        className="glow-orb bg-blue-600/10 w-[500px] h-[500px] left-1/3 bottom-10 animate-pulse-glow" 
-        style={{ animationDuration: '7s' }}
       />
 
       {/* Desktop Mouse Tracking Glow (Only displays on devices that support mouse pointer hover) */}

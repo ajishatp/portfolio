@@ -53,26 +53,26 @@
 
 /* Theme variables */
 :root {
-  --bg-theme: #faf9f6;
-  --text-primary: #1c1917;
-  --text-secondary: #57534e;
+  --bg-theme: #f8fafc; /* Crisp, premium slate-50 white */
+  --text-primary: #0f172a; /* Deep slate-900 navy */
+  --text-secondary: #475569; /* Slate-600 */
   --card-bg: #ffffff;
-  --card-border: rgba(0, 0, 0, 0.06);
+  --card-border: rgba(15, 23, 42, 0.05); /* Extremely soft slate border */
   --card-hover-border: rgba(37, 99, 235, 0.25);
-  --card-hover-shadow: rgba(37, 99, 235, 0.06);
-  --accent-blue: #2563eb;
+  --card-hover-shadow: rgba(15, 23, 42, 0.04);
+  --accent-blue: #2563eb; /* Royal blue */
   --pill-bg: #ffffff;
 }
 
 .dark, [data-theme='dark'] {
-  --bg-theme: #030014;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --card-bg: rgba(255, 255, 255, 0.02);
-  --card-border: rgba(255, 255, 255, 0.06);
-  --card-hover-border: rgba(124, 58, 237, 0.3);
-  --card-hover-shadow: rgba(124, 58, 237, 0.15);
-  --accent-blue: #38bdf8;
+  --bg-theme: #090d16; /* Sophisticated deep midnight black-blue */
+  --text-primary: #f8fafc; /* Crisp slate-50 */
+  --text-secondary: #94a3b8; /* Slate-400 */
+  --card-bg: rgba(15, 23, 42, 0.4); /* Translucent dark slate */
+  --card-border: rgba(255, 255, 255, 0.05);
+  --card-hover-border: rgba(59, 130, 246, 0.3);
+  --card-hover-shadow: rgba(59, 130, 246, 0.08);
+  --accent-blue: #60a5fa; /* Soft blue for dark mode readability */
   --pill-bg: rgba(255, 255, 255, 0.02);
 }
 
