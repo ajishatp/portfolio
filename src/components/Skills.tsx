@@ -36,7 +36,9 @@ const skillCategories: SkillCategory[] = [
       { name: "HTML & CSS", level: 95, details: "Semantic structure, responsive layouts, custom layouts using CSS variables." },
       { name: "React", level: 85, details: "Hook systems, state management, complex components lifecycles." },
       { name: "TypeScript", level: 80, details: "Type safety, static interfaces, building predictable code architectures." },
-      { name: "Tailwind CSS", level: 90, details: "Utility-first layouts, custom configurations, responsive styling workflows." },
+      { name: "Bootstrap", level: 85, details: "Responsive layouts, utility classes, and custom components design." },
+      { name: "Flutter", level: 75, details: "Cross-platform mobile application development and custom widgets design." },
+      { name: "Flask", level: 80, details: "Minimalist Python backend services, API routing, and web application logic." }
     ]
   },
   {
@@ -46,7 +48,7 @@ const skillCategories: SkillCategory[] = [
     skills: [
       { name: "Git & GitHub", level: 85, details: "Version controls, branches strategies, merge reviews, workflows automation." },
       { name: "VS Code", level: 95, details: "Environment setup, extensions settings, remote development, debugging tools." },
-      { name: "Postman", level: 80, details: "API testing, collections, environment variables management." },
+      { name: "Figma", level: 80, details: "User interface design, wireframing, and interactive prototyping." },
       { name: "Notion", level: 85, details: "Project coordination, timeline tracking, community documentation." },
     ]
   },

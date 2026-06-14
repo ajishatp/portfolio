@@ -16,27 +16,49 @@ const experiences: Job[] = [
     role: "µLearn Project Coordinator Intern",
     company: "GTech µLearn",
     location: "Kerala (Hybrid)",
-    duration: "Oct 2024 - Present",
+    duration: "Oct 2024 - June 2026",
     bullets: [
       "Coordinate student communities across multiple technical chapters, aligning academic interest with industry skills.",
       "Plan and execute student events, hackathons, and bootcamp schedules, facilitating hands-on coding environments for 500+ students.",
       "Manage project documentation, metric reporting, and student performance dashboards for internal reviews.",
       "Facilitate direct channels of mentorship and developer resources between student chapters and industry experts."
     ],
-    skillsLearned: ["Project Coordination", "Event Management", "Technical Writing", "Community Orchestration"]
+    skillsLearned: []
+  },
+  {
+    role: "Cybersecurity Virtual Intern",
+    company: "C-DAC Noida",
+    location: "Virtual",
+    duration: "July 2025 - August 2025",
+    bullets: [
+      "Completed a 2-month virtual internship program focusing on cybersecurity and defensive operations.",
+      "Developed a ransomware simulator to study threat propagation, encryption algorithms, and mock security response workflows.",
+      "Explored methodologies to identify vulnerabilities and secure host environments."
+    ],
+    skillsLearned: []
   },
   {
     role: "Digital Systems Engineering Intern",
-    company: "Palakkad Railway Division, Southern Railway",
+    company: "Southern Railway",
     location: "Palakkad, Kerala",
     duration: "July 2024 - Aug 2024",
     bullets: [
       "Studied digital workflow systems, exploring optimizations for manual process structures across railway database modules.",
       "Formulated concepts for workflow automation and data tracking portals to replace paper-based inventory structures.",
-      "Analyzed local networks and server cabinets, outlining steps for secure, high-throughput digital data routing and storage architectures.",
-      "Collaborated on draft requirements for custom web tools to track employee rosters and department maintenance logs."
+      "Analyzed local networks and server cabinets, outlining steps for secure, high-throughput digital data routing and storage architectures."
     ],
-    skillsLearned: ["System Automation Concepts", "Data Management", "Network Architectures", "Process Optimization"]
+    skillsLearned: []
+  },
+  {
+    role: "IoT Intern",
+    company: "Pacelab",
+    location: "Kerala",
+    duration: "Dec 2024 (1 Week)",
+    bullets: [
+      "Gained practical exposure to IoT (Internet of Things) concepts, hardware architectures, and sensor communications.",
+      "Tinkered with microcontroller boards and explored smart automation interfaces."
+    ],
+    skillsLearned: []
   }
 ];
 
@@ -108,18 +130,7 @@ export const Experience: React.FC = () => {
                 ))}
               </ul>
 
-              {/* Skills Learned Badges */}
-              <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-white/[0.06] relative z-10">
-                <span className="text-[10px] uppercase tracking-wider text-slate-500 font-bold mr-2">Core Competencies:</span>
-                {job.skillsLearned.map((skill, sIdx) => (
-                  <span 
-                    key={sIdx}
-                    className="text-xs text-slate-300 bg-white/[0.04] border border-white/[0.06] px-2.5 py-1 rounded-md"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+
             </motion.div>
           ))}
         </div>

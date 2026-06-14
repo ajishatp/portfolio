@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FileText, ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight, Mail } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   const containerVariants = {
@@ -21,43 +21,6 @@ export const Hero: React.FC = () => {
       opacity: 1,
       transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as any },
     },
-  };
-
-  const handleDownloadCV = () => {
-    // Generate a beautiful mock CV text file download
-    const cvContent = `AJISHA TP - RESUME
-Role: Computer Science Engineering Student | Aspiring Software Developer
-
-CONTACT:
-Email: ajisha.tp@example.com
-LinkedIn: linkedin.com/in/ajishatp
-GitHub: github.com/ajishatp
-
-SUMMARY:
-Motivated Computer Science Engineering student with a passion for web development and artificial intelligence. Experienced coordinator with leadership skills gained as a µLearn Project Coordinator Intern. Seeking to contribute my coding and process automation abilities in a dynamic software engineering role.
-
-EDUCATION:
-B.Tech in Computer Science Engineering (Pursuing)
-
-EXPERIENCE:
-1. µLearn Project Coordinator Intern
-   - Community coordination, events planning, documentation and reporting.
-2. Palakkad Railway Internship
-   - Workflow digitalization concepts, data management and process automation.
-
-SKILLS:
-- Languages: C, C++, Java, Python, JavaScript
-- Web Dev: HTML, CSS, React, TypeScript, Tailwind CSS
-- Tools: Git, GitHub, VS Code, Postman, Notion
-- AI/Data: Generative AI, Prompt Engineering, RAG, LLM Apps`;
-
-    const blob = new Blob([cvContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Ajisha_TP_Resume.txt';
-    link.click();
-    URL.revokeObjectURL(url);
   };
 
   const handleScrollToSection = (id: string) => {
@@ -113,7 +76,7 @@ SKILLS:
             variants={itemVariants}
             className="text-lg sm:text-2xl font-bold text-slate-300 tracking-tight mb-6"
           >
-            Computer Science Engineering Student &amp; Software Developer
+            I'm a Project Coordinator Intern in µLearn
           </motion.h2>
 
           {/* Intro Description */}
@@ -121,7 +84,7 @@ SKILLS:
             variants={itemVariants}
             className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl mb-8"
           >
-            Web development and AI enthusiast. Passionate about engineering high-quality digital products, automating manual tasks, and leading student communities. As a µLearn Coordinator Intern, I bridge the gap between people and technology.
+            Computer Science Engineering student passionate about software development, AI, and modern web technologies. Currently serving as a µLearn Project Coordinator Intern, with interests in building impactful digital solutions, problem-solving, and continuous learning.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -138,16 +101,8 @@ SKILLS:
             </button>
 
             <button
-              onClick={handleDownloadCV}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-white/[0.08] hover:border-white/20 bg-white/[0.02] hover:bg-white/[0.06] text-slate-200 font-semibold text-sm transition-all active:scale-98"
-            >
-              <FileText className="w-4 h-4 text-sky-400" />
-              Download Resume
-            </button>
-
-            <button
               onClick={() => handleScrollToSection('#contact')}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-transparent hover:border-white/[0.08] text-slate-400 hover:text-slate-200 text-sm font-semibold transition-all"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-white/[0.08] hover:border-white/20 bg-white/[0.02] hover:bg-white/[0.06] text-slate-200 font-semibold text-sm transition-all active:scale-98"
             >
               Contact Me
             </button>
@@ -159,20 +114,20 @@ SKILLS:
             className="flex items-center gap-4 text-slate-500 border-t border-white/[0.06] pt-6 max-w-md"
           >
             <span className="text-xs font-semibold tracking-wider text-slate-500 uppercase">Connect:</span>
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="p-2 rounded-lg hover:bg-white/5 hover:text-white transition-colors" aria-label="GitHub">
+            <a href="https://github.com/ajishatp" target="_blank" rel="noreferrer" className="p-2 rounded-lg hover:bg-white/5 hover:text-white transition-colors" aria-label="GitHub">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
                 <path d="M9 18c-4.51 2-5-2-7-2" />
               </svg>
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="p-2 rounded-lg hover:bg-white/5 hover:text-white transition-colors" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/ajisha-tp-931018333?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer" className="p-2 rounded-lg hover:bg-white/5 hover:text-white transition-colors" aria-label="LinkedIn">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
                 <rect x="2" y="9" width="4" height="12" />
                 <circle cx="4" cy="4" r="2" />
               </svg>
             </a>
-            <a href="mailto:ajisha.tp@example.com" className="p-2 rounded-lg hover:bg-white/5 hover:text-white transition-colors" aria-label="Email">
+            <a href="mailto:tpajisha@gmail.com" className="p-2 rounded-lg hover:bg-white/5 hover:text-white transition-colors" aria-label="Email">
               <Mail className="w-5 h-5" />
             </a>
           </motion.div>

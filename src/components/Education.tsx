@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Calendar, Award, BookOpen } from 'lucide-react';
+import { GraduationCap, Calendar } from 'lucide-react';
 
 interface AcademicEntry {
   degree: string;
@@ -14,23 +14,25 @@ const educationTimeline: AcademicEntry[] = [
   {
     degree: "B.Tech in Computer Science & Engineering",
     institution: "APJ Abdul Kalam Technological University (KTU)",
-    duration: "2022 - 2026",
+    duration: "2023 – 2027",
     grade: "CGPA: 8.2 (Pursuing)",
     details: [
-      "Specializing in Software Development and AI integration.",
-      "Core coursework: Data Structures, Analysis of Algorithms, Database Management Systems, Computer Networks, Software Engineering.",
-      "Active participant in tech clubs, leading peer study circles for Python and Javascript.",
+      "Specializing in Software Development, Artificial Intelligence, and Modern Web Technologies.",
+      "Strong foundation in Data Structures, Algorithms, Database Management Systems, Computer Networks, and Software Engineering.",
+      "Passionate about building innovative software solutions and AI-powered applications.",
+      "Actively involved in technical communities, hackathons, and collaborative learning initiatives."
     ]
   },
   {
-    degree: "Higher Secondary Education (Class XII) - Computer Science",
-    institution: "Kerala State Board",
-    duration: "2020 - 2022",
+    degree: "Higher Secondary Education (Class XII)",
+    institution: "Kerala State Higher Secondary Education Board",
+    duration: "2020 – 2022",
     grade: "Percentage: 94%",
     details: [
-      "Majored in Mathematics, Physics, Chemistry, and Computer Science.",
-      "Developed basic applications using C++ and Python.",
-      "Academic topper in Computer Science course audits."
+      "Specialized in Biology, Physics, Chemistry, and Mathematics.",
+      "Developed strong analytical, problem-solving, and scientific reasoning skills.",
+      "Maintained excellent academic performance throughout higher secondary education.",
+      "Built a solid foundation for pursuing engineering and technology-focused studies."
     ]
   }
 ];
@@ -112,43 +114,7 @@ export const Education: React.FC = () => {
           ))}
         </div>
 
-        {/* Highlights/Achievements under education */}
-        <div className="mt-16 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="p-5 rounded-2xl glass-card flex gap-4 items-start"
-          >
-            <div className="p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 shrink-0">
-              <Award className="w-5 h-5" />
-            </div>
-            <div>
-              <h5 className="text-sm font-bold text-white mb-1">Academic Honors</h5>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Ranked in the top 10% of the Computer Science batch. Consistently scoring highly in algorithms and core systems development.
-              </p>
-            </div>
-          </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="p-5 rounded-2xl glass-card flex gap-4 items-start"
-          >
-            <div className="p-2.5 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 shrink-0">
-              <BookOpen className="w-5 h-5" />
-            </div>
-            <div>
-              <h5 className="text-sm font-bold text-white mb-1">Elective Specializations</h5>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Completed elective labs on AI methodologies, cloud compute basics, and full-stack web applications design architecture.
-              </p>
-            </div>
-          </motion.div>
-        </div>
 
       </div>
     </section>

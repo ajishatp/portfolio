@@ -23,7 +23,7 @@ export const Footer: React.FC = () => {
         {/* Social Links */}
         <div className="flex items-center gap-4 text-slate-500">
           <a 
-            href="https://github.com" 
+            href="https://github.com/ajishatp" 
             target="_blank" 
             rel="noreferrer" 
             className="p-2 rounded-lg hover:bg-white/5 hover:text-white transition-colors"
@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
             </svg>
           </a>
           <a 
-            href="https://linkedin.com" 
+            href="https://www.linkedin.com/in/ajisha-tp-931018333?utm_source=share_via&utm_content=profile&utm_medium=member_android" 
             target="_blank" 
             rel="noreferrer" 
             className="p-2 rounded-lg hover:bg-white/5 hover:text-white transition-colors"
@@ -48,7 +48,7 @@ export const Footer: React.FC = () => {
             </svg>
           </a>
           <a 
-            href="mailto:ajisha.tp@example.com" 
+            href="mailto:tpajisha@gmail.com" 
             className="p-2 rounded-lg hover:bg-white/5 hover:text-white transition-colors"
             aria-label="Email"
           >

@@ -13,36 +13,36 @@ interface Project {
 
 const projectsData: Project[] = [
   {
-    title: "AI Chatbot for Banking",
-    category: "ai",
-    desc: "A conversational assistant designed for banking operations. Handles customer FAQs, triggers balance checks, and suggests loan offers securely utilizing LangChain and Retrieval-Augmented Generation (RAG).",
-    tags: ["Python", "LangChain", "RAG", "React", "Tailwind CSS"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com"
-  },
-  {
-    title: "Railway Data Management Portal",
+    title: "Blood Bank Tracking System",
     category: "web",
-    desc: "A secure digital workflow administration dashboard designed to manage southern railway division employee schedules, inventory tracking logs, and routine maintenance reports.",
-    tags: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com"
+    desc: "Efficient blood inventory management, donor information management, and tracking of nearest available blood banks.",
+    tags: ["React", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
+    githubUrl: "https://github.com/ajishatp/blood-bank",
+    liveUrl: "https://ajishatp.github.io/error/"
   },
   {
-    title: "Smart Attendance System",
+    title: "Solar Explorer Application",
     category: "systems",
-    desc: "An automated classroom attendance system utilizing computer vision for facial recognition. Records student clock-ins and uploads analytics reports to an admin panel.",
-    tags: ["Python", "OpenCV", "Flask", "SQLite", "Tailwind CSS"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com"
+    desc: "Explore the solar system interactively. Performs real-time calculations of travel times between planets with detailed celestial body profiles and stunning visuals.",
+    tags: ["React", "Three.js", "Tailwind CSS", "Framer Motion"],
+    githubUrl: "https://github.com/ajishatp/solar-explorer",
+    liveUrl: "https://ajishatp.github.io/error/"
   },
   {
-    title: "Premium Portfolio Website",
+    title: "StyleSense",
+    category: "ai",
+    desc: "Explore the world of fashion and beauty interactively with StyleSense AI. Get real-time outfit and makeup suggestions based on face shape, body type, and skin tone.",
+    tags: ["Python", "OpenCV", "MediaPipe", "Generative AI", "React"],
+    githubUrl: "https://github.com/ajishatp/stylesense",
+    liveUrl: "https://alkasumesh.github.io/StyleSense/"
+  },
+  {
+    title: "XchangeIt",
     category: "web",
-    desc: "Sleek, responsive dark-themed developer portfolio featuring scroll-spy navigation, Framer Motion animations, glassmorphism UI/UX cards, and optimized load times.",
-    tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "Framer Motion"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com"
+    desc: "A smarter way to Buy, Rent, and Sell inside our campus. Designed exclusively for students, XchangeIt connects campus members in real time to make transactions safe and simple.",
+    tags: ["React", "Firebase", "Tailwind CSS", "Node.js"],
+    githubUrl: "https://github.com/ajishatp/xchangeit",
+    liveUrl: "https://xchangeit-finally.onrender.com/"
   }
 ];
 
