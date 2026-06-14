@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   const containerVariants = {
@@ -42,153 +41,144 @@ export const Hero: React.FC = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden bg-grid-pattern"
     >
+      {/* Soft background glow matching light/dark mode */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-400/20 dark:bg-blue-600/10 blur-[120px] rounded-full -z-10 animate-pulse-glow" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-400/10 dark:bg-purple-600/10 blur-[120px] rounded-full -z-10 animate-pulse-glow" style={{ animationDelay: '2s' }} />
+
       <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        {/* Left: Headline & Bio Info */}
+        {/* Left Side: Name, Taglines, Buttons & Status Pills */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           className="lg:col-span-7 flex flex-col justify-center text-left"
         >
-          {/* Availability Badge */}
+          {/* Subheading with horizontal line */}
           <motion.div 
             variants={itemVariants}
-            className="inline-flex items-center gap-2 self-start px-3.5 py-1.5 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 text-xs font-semibold tracking-wide mb-6"
+            className="flex items-center gap-3 mb-6"
           >
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            Available for Internships & Grad Roles
+            <span className="w-8 h-[2px] bg-blue-600 dark:bg-blue-400 shrink-0" />
+            <span className="text-xs sm:text-sm uppercase tracking-widest text-stone-500 dark:text-slate-400 font-bold">
+              Computer Science Student &bull; GEC Palakkad
+            </span>
           </motion.div>
 
-          {/* Name & Greeting */}
+          {/* Large Name Display */}
           <motion.h1 
             variants={itemVariants}
-            className="text-4xl sm:text-6xl font-bold tracking-tight mb-4"
+            className="text-5xl sm:text-7xl font-extrabold tracking-tight text-stone-900 dark:text-white mb-6 leading-none"
           >
-            Hi, I'm <br />
-            <span className="text-gradient-blue-purple font-extrabold">Ajisha TP</span>
+            AJISHA <span className="text-blue-600 dark:text-blue-400">TP</span>
           </motion.h1>
 
-          {/* Roles Tagline */}
-          <motion.h2 
-            variants={itemVariants}
-            className="text-lg sm:text-2xl font-bold text-slate-300 tracking-tight mb-6"
-          >
-            I'm a Project Coordinator Intern in µLearn
-          </motion.h2>
-
-          {/* Intro Description */}
+          {/* Tagline code-styled */}
           <motion.p 
             variants={itemVariants}
-            className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl mb-8"
+            className="font-mono text-sm sm:text-base text-stone-600 dark:text-slate-400 mb-8 flex items-center gap-1.5"
           >
-            Computer Science Engineering student passionate about software development, AI, and modern web technologies. Currently serving as a µLearn Project Coordinator Intern, with interests in building impactful digital solutions, problem-solving, and continuous learning.
+            <span className="text-blue-600 dark:text-blue-400 font-bold">~ /</span> I turn ideas into software
           </motion.p>
 
           {/* CTA Buttons */}
           <motion.div 
             variants={itemVariants}
-            className="flex flex-wrap items-center gap-4 mb-8"
+            className="flex flex-wrap items-center gap-4 mb-10"
           >
             <button
               onClick={() => handleScrollToSection('#projects')}
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold text-sm hover:from-blue-500 hover:to-purple-500 transition-all shadow-lg shadow-purple-500/15 hover:shadow-purple-500/25 active:scale-98"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-md shadow-blue-500/10 hover:shadow-blue-500/25 active:scale-98 cursor-pointer"
             >
-              View Projects
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              View Projects &darr;
             </button>
 
             <button
               onClick={() => handleScrollToSection('#contact')}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-white/[0.08] hover:border-white/20 bg-white/[0.02] hover:bg-white/[0.06] text-slate-200 font-semibold text-sm transition-all active:scale-98"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-card-border bg-card-bg hover:bg-stone-100 dark:hover:bg-white/5 text-stone-700 dark:text-slate-200 font-semibold text-sm transition-all active:scale-98 cursor-pointer shadow-sm"
             >
-              Contact Me
+              Get in Touch &nearr;
             </button>
           </motion.div>
 
-          {/* Social Profiles Quick links */}
+          {/* Rounded Pill Bars */}
           <motion.div 
             variants={itemVariants}
-            className="flex items-center gap-4 text-slate-500 border-t border-white/[0.06] pt-6 max-w-md"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full max-w-xl"
           >
-            <span className="text-xs font-semibold tracking-wider text-slate-500 uppercase">Connect:</span>
-            <a href="https://github.com/ajishatp" target="_blank" rel="noreferrer" className="p-2 rounded-lg hover:bg-white/5 hover:text-white transition-colors" aria-label="GitHub">
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                <path d="M9 18c-4.51 2-5-2-7-2" />
-              </svg>
-            </a>
-            <a href="https://www.linkedin.com/in/ajisha-tp-931018333?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer" className="p-2 rounded-lg hover:bg-white/5 hover:text-white transition-colors" aria-label="LinkedIn">
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                <rect x="2" y="9" width="4" height="12" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
-            </a>
-            <a href="mailto:tpajisha@gmail.com" className="p-2 rounded-lg hover:bg-white/5 hover:text-white transition-colors" aria-label="Email">
-              <Mail className="w-5 h-5" />
-            </a>
+            <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-card-border bg-pill-bg shadow-sm">
+              <span className="w-2.5 h-2.5 rounded-full bg-blue-600 dark:bg-blue-400 shrink-0" />
+              <span className="text-xs sm:text-sm font-semibold text-stone-700 dark:text-slate-300">4+ Projects Built</span>
+            </div>
+            <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-card-border bg-pill-bg shadow-sm">
+              <span className="w-2.5 h-2.5 rounded-full bg-blue-600 dark:bg-blue-400 shrink-0" />
+              <span className="text-xs sm:text-sm font-semibold text-stone-700 dark:text-slate-300">µLearn Coordinator</span>
+            </div>
+            <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-card-border bg-pill-bg shadow-sm">
+              <span className="w-2.5 h-2.5 rounded-full bg-blue-600 dark:bg-blue-400 shrink-0" />
+              <span className="text-xs sm:text-sm font-semibold text-stone-700 dark:text-slate-300">4th Year CS</span>
+            </div>
           </motion.div>
         </motion.div>
 
-        {/* Right: Premium Interactive IDE Code Mockup */}
+        {/* Right Side: IDE Mockup */}
         <motion.div 
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-5 hidden lg:block"
         >
-          <div className="relative w-full max-w-md mx-auto aspect-[4/3] rounded-2xl glass-card border border-white/[0.08] shadow-2xl p-6 overflow-hidden">
-            {/* Window controls decoration */}
-            <div className="flex items-center justify-between mb-4 border-b border-white/[0.06] pb-3">
+          <div className="relative w-full max-w-md mx-auto aspect-[4/3] rounded-2xl glass-card shadow-2xl p-6 overflow-hidden">
+            {/* Header controls */}
+            <div className="flex items-center justify-between mb-4 border-b border-card-border pb-3">
               <div className="flex items-center gap-1.5">
                 <span className="w-3 h-3 rounded-full bg-red-500/70" />
                 <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
                 <span className="w-3 h-3 rounded-full bg-green-500/70" />
               </div>
-              <div className="text-[10px] font-mono text-slate-500 font-semibold tracking-wider">
+              <div className="text-[10px] font-mono text-stone-500 dark:text-slate-500 font-semibold tracking-wider">
                 ajisha_profile.ts — VS Code
               </div>
             </div>
 
-            {/* Code editor content */}
-            <div className="font-mono text-[12px] sm:text-[13px] leading-relaxed text-slate-300">
+            {/* Code Content */}
+            <div className="font-mono text-[12px] sm:text-[13px] leading-relaxed text-stone-700 dark:text-slate-300">
               <pre className="whitespace-pre-wrap">
-                <span className="text-purple-400">const</span>{' '}
-                <span className="text-blue-400">developer</span> = &#123;
+                <span className="text-purple-600 dark:text-purple-400 font-semibold">const</span>{' '}
+                <span className="text-blue-600 dark:text-blue-400">developer</span> = &#123;
                 <br />
                 &nbsp;&nbsp;name:{' '}
-                <span className="text-emerald-400">"Ajisha TP"</span>,
+                <span className="text-emerald-600 dark:text-emerald-400">"Ajisha TP"</span>,
                 <br />
                 &nbsp;&nbsp;role:{' '}
-                <span className="text-emerald-400">
+                <span className="text-emerald-600 dark:text-emerald-400">
                   "CS Engineering Student"
                 </span>
                 ,
                 <br />
                 &nbsp;&nbsp;skills: [
-                <span className="text-emerald-400">"React"</span>,{' '}
-                <span className="text-emerald-400">"TS"</span>,{' '}
-                <span className="text-emerald-400">"GenAI"</span>,{' '}
-                <span className="text-emerald-400">"Python"</span>],
+                <span className="text-emerald-600 dark:text-emerald-400">"React"</span>,{' '}
+                <span className="text-emerald-600 dark:text-emerald-400">"TS"</span>,{' '}
+                <span className="text-emerald-600 dark:text-emerald-400">"GenAI"</span>,{' '}
+                <span className="text-emerald-600 dark:text-emerald-400">"Python"</span>],
                 <br />
                 &nbsp;&nbsp;coordinator:{' '}
-                <span className="text-blue-400">true</span>,
+                <span className="text-blue-600 dark:text-blue-400">true</span>,
                 <br />
                 &nbsp;&nbsp;seeking:{' '}
-                <span className="text-emerald-400">"Internships"</span>,
+                <span className="text-emerald-600 dark:text-emerald-400">"Internships"</span>,
                 <br />
                 &nbsp;&nbsp;location:{' '}
-                <span className="text-emerald-400">"Kerala, India"</span>
+                <span className="text-emerald-600 dark:text-emerald-400">"Kerala, India"</span>
                 <br />
                 &#125;;
               </pre>
             </div>
 
             {/* Glowing accents behind IDE box */}
-            <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-gradient-to-tr from-purple-600/10 to-blue-500/15 blur-[60px] rounded-full -z-10" />
+            <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-gradient-to-tr from-blue-600/5 to-purple-600/5 dark:from-purple-600/10 dark:to-blue-500/15 blur-[60px] rounded-full -z-10" />
           </div>
         </motion.div>
 

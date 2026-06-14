@@ -75,7 +75,7 @@ export const Education: React.FC = () => {
               className="relative"
             >
               {/* Timeline dot icon */}
-              <div className="absolute -left-[39px] md:-left-[55px] top-1.5 p-2 rounded-full bg-slate-950 border border-blue-500/40 text-blue-400 shadow-md">
+              <div className="absolute -left-[39px] md:-left-[55px] top-1.5 p-2 rounded-full bg-bg-theme border border-blue-500/40 text-blue-400 shadow-md transition-colors duration-300">
                 <GraduationCap className="w-4 h-4 md:w-5 h-5" />
               </div>
 
@@ -84,16 +84,16 @@ export const Education: React.FC = () => {
                 {/* Timeline metadata */}
                 <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
                   <div>
-                    <h4 className="text-lg font-bold text-white tracking-wide">{item.degree}</h4>
-                    <span className="text-sm font-semibold text-slate-400">{item.institution}</span>
+                    <h4 className="text-lg font-bold text-stone-900 dark:text-white tracking-wide">{item.degree}</h4>
+                    <span className="text-sm font-semibold text-stone-500 dark:text-slate-400">{item.institution}</span>
                   </div>
                   <div className="flex flex-col items-end gap-1.5 shrink-0">
-                    <div className="inline-flex items-center gap-1.5 text-xs text-purple-400 font-semibold bg-purple-500/10 border border-purple-500/20 px-3 py-1 rounded-full">
+                    <div className="inline-flex items-center gap-1.5 text-xs text-purple-600 dark:text-purple-400 font-semibold bg-purple-500/10 border border-purple-500/20 px-3 py-1 rounded-full">
                       <Calendar className="w-3.5 h-3.5" />
                       {item.duration}
                     </div>
                     {item.grade && (
-                      <span className="text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-md">
+                      <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-md">
                         {item.grade}
                       </span>
                     )}
@@ -101,10 +101,10 @@ export const Education: React.FC = () => {
                 </div>
 
                 {/* Bullets details */}
-                <ul className="space-y-2.5 text-slate-400 text-xs sm:text-sm leading-relaxed list-none">
+                <ul className="space-y-2.5 text-stone-500 dark:text-slate-400 text-xs sm:text-sm leading-relaxed list-none">
                   {item.details.map((detail, dIdx) => (
                     <li key={dIdx} className="flex gap-2.5 items-start">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-500 mt-1.5 shrink-0" />
                       <span>{detail}</span>
                     </li>
                   ))}

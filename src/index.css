@@ -1,6 +1,16 @@
 @import "tailwindcss";
 
 @theme {
+  --color-bg-theme: var(--bg-theme);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-card-hover-border: var(--card-hover-border);
+  --color-card-hover-shadow: var(--card-hover-shadow);
+  --color-accent-blue: var(--accent-blue);
+  --color-pill-bg: var(--pill-bg);
+
   --color-bgDark: #030014;
   --color-cardDark: rgba(255, 255, 255, 0.02);
   --color-borderDark: rgba(255, 255, 255, 0.08);
@@ -41,6 +51,31 @@
   }
 }
 
+/* Theme variables */
+:root {
+  --bg-theme: #faf9f6;
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.06);
+  --card-hover-border: rgba(37, 99, 235, 0.25);
+  --card-hover-shadow: rgba(37, 99, 235, 0.06);
+  --accent-blue: #2563eb;
+  --pill-bg: #ffffff;
+}
+
+.dark, [data-theme='dark'] {
+  --bg-theme: #030014;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --card-border: rgba(255, 255, 255, 0.06);
+  --card-hover-border: rgba(124, 58, 237, 0.3);
+  --card-hover-shadow: rgba(124, 58, 237, 0.15);
+  --accent-blue: #38bdf8;
+  --pill-bg: rgba(255, 255, 255, 0.02);
+}
+
 /* Base Styles */
 html {
   font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
@@ -48,8 +83,9 @@ html {
 }
 
 body {
-  background-color: #030014;
-  color: #f1f5f9;
+  background-color: var(--bg-theme);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Custom Sleek Scrollbar */
@@ -59,13 +95,13 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #030014;
+  background: var(--bg-theme);
 }
 
 ::-webkit-scrollbar-thumb {
   background: rgba(124, 58, 237, 0.2);
   border-radius: 9999px;
-  border: 2px solid #030014;
+  border: 2px solid var(--bg-theme);
   transition: background 0.3s ease;
 }
 
@@ -83,29 +119,30 @@ body {
 }
 
 .text-gradient-silver {
-  @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400;
+  @apply bg-clip-text text-transparent bg-gradient-to-b from-stone-900 to-stone-500 dark:from-white dark:to-slate-400;
 }
 
 /* Glassmorphism Styles */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.01);
+  background: var(--card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--card-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--card-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--card-border);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(124, 58, 237, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.15);
+  background: var(--card-bg);
+  border-color: var(--card-hover-border);
+  box-shadow: 0 10px 30px -10px var(--card-hover-shadow);
 }
 
 /* Animated Border Hover */
@@ -119,7 +156,7 @@ body {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(to right, transparent, rgba(56, 189, 248, 0.5), rgba(168, 85, 247, 0.5), transparent);
+  background: linear-gradient(to right, transparent, rgba(56, 189, 248, 0.3), rgba(168, 85, 247, 0.3), transparent);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -135,6 +172,11 @@ body {
 /* Background Grid Overlay style */
 .bg-grid-pattern {
   background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(120, 120, 120, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(120, 120, 120, 0.05) 1px, transparent 1px);
+}
+
+.dark .bg-grid-pattern {
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
                     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
@@ -147,6 +189,10 @@ body {
   pointer-events: none;
   opacity: 0.15;
   mix-blend-mode: screen;
+}
+
+.dark .glow-orb {
+  opacity: 0.15;
 }
 
 /* Animation triggers */

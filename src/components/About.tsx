@@ -56,10 +56,10 @@ export const About: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-7 space-y-6 text-slate-300 text-sm sm:text-base leading-relaxed"
+            className="lg:col-span-7 space-y-6 text-stone-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed"
           >
             <p>
-              I am a <strong className="text-white">Computer Science Engineering student</strong> passionate about software development, AI, and modern web technologies. Currently serving as a <strong className="text-white">µLearn Project Coordinator Intern</strong>, with interests in building impactful digital solutions, problem-solving, and continuous learning.
+              I am a <strong className="text-stone-950 dark:text-white">Computer Science Engineering student</strong> passionate about software development, AI, and modern web technologies. Currently serving as a <strong className="text-stone-950 dark:text-white">µLearn Project Coordinator Intern</strong>, with interests in building impactful digital solutions, problem-solving, and continuous learning.
             </p>
           </motion.div>
 
@@ -76,12 +76,12 @@ export const About: React.FC = () => {
                 key={idx} 
                 className="p-5 rounded-2xl glass-card flex gap-4 items-start glow-border"
               >
-                <div className="p-3 rounded-xl bg-white/[0.04] border border-white/[0.06] shrink-0">
+                <div className="p-3 rounded-xl bg-stone-50 dark:bg-white/[0.04] border border-card-border shrink-0">
                   {stat.icon}
                 </div>
                 <div className="flex flex-col gap-1">
-                  <h4 className="text-sm font-bold text-white tracking-wide">{stat.title}</h4>
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{stat.desc}</p>
+                  <h4 className="text-sm font-bold text-stone-900 dark:text-white tracking-wide">{stat.title}</h4>
+                  <p className="text-xs sm:text-sm text-stone-500 dark:text-slate-400 leading-relaxed">{stat.desc}</p>
                 </div>
               </div>
             ))}

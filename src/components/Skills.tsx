@@ -97,7 +97,7 @@ export const Skills: React.FC = () => {
 
         {/* Tab Controls */}
         <div className="flex justify-center mb-12">
-          <div className="flex flex-wrap justify-center gap-1.5 p-1 rounded-full border border-white/[0.06] bg-white/[0.01]">
+          <div className="flex flex-wrap justify-center gap-1.5 p-1 rounded-full border border-card-border bg-card-bg/50">
             {skillCategories.map((category) => {
               const isActive = activeTab === category.id;
               return (
@@ -105,13 +105,13 @@ export const Skills: React.FC = () => {
                   key={category.id}
                   onClick={() => setActiveTab(category.id)}
                   className={`relative flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-full transition-colors duration-300 ${
-                    isActive ? 'text-white font-bold' : 'text-slate-400 hover:text-slate-200'
+                    isActive ? 'text-blue-600 dark:text-white font-bold' : 'text-stone-500 dark:text-slate-400 hover:text-stone-900 dark:hover:text-slate-200'
                   }`}
                 >
                   {isActive && (
                     <motion.span
                       layoutId="activeSkillTab"
-                      className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-white/[0.08] rounded-full"
+                      className="absolute inset-0 bg-blue-600/10 dark:bg-white/[0.06] border border-blue-600/20 dark:border-white/[0.08] rounded-full"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -142,14 +142,14 @@ export const Skills: React.FC = () => {
                   <div>
                     {/* Title & Level Percentage */}
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-bold text-white tracking-wide">{skill.name}</span>
-                      <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2 py-0.5 rounded">
+                      <span className="text-sm font-bold text-stone-900 dark:text-white tracking-wide">{skill.name}</span>
+                      <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2 py-0.5 rounded">
                         {skill.level}%
                       </span>
                     </div>
 
                     {/* Progress Bar Container */}
-                    <div className="h-1.5 w-full bg-white/[0.04] rounded-full overflow-hidden mb-4">
+                    <div className="h-1.5 w-full bg-stone-100 dark:bg-white/[0.04] rounded-full overflow-hidden mb-4">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${skill.level}%` }}
@@ -160,7 +160,7 @@ export const Skills: React.FC = () => {
                   </div>
 
                   {/* Skill Context description */}
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-stone-500 dark:text-slate-400 leading-relaxed">
                     {skill.details}
                   </p>
                 </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Terminal, Cpu } from 'lucide-react';
+import { Menu, X, Sun, Moon, Terminal } from 'lucide-react';
 
 interface NavLink {
   label: string;
@@ -22,6 +22,14 @@ export const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('portfolio-theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    return 'dark';
+  });
 
   // Scrollspy & Glass navbar toggle
   useEffect(() => {
@@ -47,6 +55,19 @@ export const Navbar: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+    localStorage.setItem('portfolio-theme', nextTheme);
+    if (nextTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  };
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -74,7 +95,7 @@ export const Navbar: React.FC = () => {
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           scrolled 
-            ? 'py-4 bg-[#030014]/70 backdrop-blur-md border-b border-white/[0.06]' 
+            ? 'py-4 bg-bg-theme/85 backdrop-blur-md border-b border-card-border/80 shadow-sm' 
             : 'py-6 bg-transparent'
         }`}
       >
@@ -83,61 +104,79 @@ export const Navbar: React.FC = () => {
           <a 
             href="#home" 
             onClick={(e) => handleLinkClick(e, '#home')}
-            className="flex items-center gap-2 text-xl font-bold tracking-tight text-white group"
+            className="flex items-center gap-1.5 text-xl font-bold tracking-wider text-text-primary group"
           >
-            <div className="p-1.5 rounded-lg bg-gradient-to-tr from-blue-600 to-purple-600 text-white shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform">
-              <Cpu className="w-5 h-5" />
-            </div>
-            <span className="bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent group-hover:text-white transition-colors">
-              Ajisha <span className="text-blue-400 font-medium">TP</span>
-            </span>
+            <span>AJISHA <span className="text-blue-600 dark:text-blue-400">TP</span><span className="text-blue-600 dark:text-blue-400 animate-pulse">.</span></span>
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1.5 px-2 py-1.5 rounded-full border border-white/[0.04] bg-white/[0.01]">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.href.slice(1);
-              return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => handleLinkClick(e, link.href)}
-                  className={`relative px-4 py-1.5 text-xs font-semibold tracking-wide rounded-full transition-colors duration-300 ${
-                    isActive ? 'text-white' : 'text-slate-400 hover:text-slate-200'
-                  }`}
-                >
-                  {isActive && (
-                    <motion.span
-                      layoutId="activeNavIndicator"
-                      className="absolute inset-0 bg-white/[0.06] border border-white/[0.06] rounded-full -z-10"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                  {link.label}
-                </a>
-              );
-            })}
-          </nav>
+          <div className="hidden lg:flex items-center gap-6">
+            <nav className="flex items-center gap-1.5 px-2 py-1.5 rounded-full border border-card-border bg-card-bg/50">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href.slice(1);
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={(e) => handleLinkClick(e, link.href)}
+                    className={`relative px-4 py-1.5 text-xs font-semibold tracking-wide rounded-full transition-colors duration-300 ${
+                      isActive 
+                        ? 'text-stone-900 dark:text-white font-bold' 
+                        : 'text-stone-600 dark:text-slate-400 hover:text-stone-900 dark:hover:text-slate-200'
+                    }`}
+                  >
+                    {isActive && (
+                      <motion.span
+                        layoutId="activeNavIndicator"
+                        className="absolute inset-0 bg-stone-100/80 dark:bg-white/[0.06] border border-stone-200/50 dark:border-white/[0.06] rounded-full -z-10"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                    {link.label}
+                  </a>
+                );
+              })}
+            </nav>
 
-          {/* CTA Header Actions */}
-          <div className="hidden lg:flex items-center gap-4">
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full border border-card-border bg-card-bg hover:bg-stone-100 dark:hover:bg-white/5 text-stone-600 dark:text-slate-400 hover:text-stone-900 dark:hover:text-white transition-all shadow-sm active:scale-95 cursor-pointer"
+              aria-label="Toggle Theme Mode"
+            >
+              {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-blue-600" />}
+            </button>
+
+            {/* CTA Header Actions */}
             <a
               href="#contact"
               onClick={(e) => handleLinkClick(e, '#contact')}
-              className="px-4 py-2 text-xs font-semibold tracking-wider rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white transition-all shadow-lg shadow-purple-500/10 hover:shadow-purple-500/20"
+              className="px-4 py-2 text-xs font-semibold tracking-wider rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-all shadow-md shadow-blue-500/10 hover:shadow-blue-500/20 active:scale-98"
             >
               Hire Me
             </a>
           </div>
 
-          {/* Mobile Menu Toggle button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
-            aria-label="Toggle Navigation Menu"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Menu & Theme Toggle */}
+          <div className="flex lg:hidden items-center gap-2">
+            {/* Theme Toggle Button for Mobile */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full border border-card-border bg-card-bg hover:bg-stone-100 dark:hover:bg-white/5 text-stone-600 dark:text-slate-400 hover:text-stone-900 dark:hover:text-white transition-all shadow-sm active:scale-95 cursor-pointer"
+              aria-label="Toggle Theme Mode"
+            >
+              {theme === 'dark' ? <Sun className="w-4.5 h-4.5 text-amber-400" /> : <Moon className="w-4.5 h-4.5 text-blue-600" />}
+            </button>
+
+            {/* Mobile Menu Toggle button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-lg text-stone-600 dark:text-slate-400 hover:text-stone-900 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-white/5 transition-colors"
+              aria-label="Toggle Navigation Menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </motion.header>
 
@@ -151,7 +190,7 @@ export const Navbar: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm lg:hidden"
             />
 
             {/* Slide-out Panel */}
@@ -160,7 +199,7 @@ export const Navbar: React.FC = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
-              className="fixed top-0 right-0 bottom-0 z-30 w-72 max-w-[80vw] bg-[#030014]/90 backdrop-blur-xl border-l border-white/[0.08] p-6 flex flex-col pt-24 lg:hidden"
+              className="fixed top-0 right-0 bottom-0 z-30 w-72 max-w-[80vw] bg-bg-theme/95 backdrop-blur-xl border-l border-card-border p-6 flex flex-col pt-24 lg:hidden"
             >
               <div className="flex flex-col gap-3">
                 {navLinks.map((link) => {
@@ -172,22 +211,22 @@ export const Navbar: React.FC = () => {
                       onClick={(e) => handleLinkClick(e, link.href)}
                       className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
                         isActive
-                          ? 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-white border border-white/[0.08]'
-                          : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
+                          ? 'bg-blue-600/10 text-blue-600 dark:text-white border border-blue-600/20'
+                          : 'text-stone-600 dark:text-slate-400 hover:text-stone-900 dark:hover:text-slate-200 hover:bg-stone-100 dark:hover:bg-white/5'
                       }`}
                     >
-                      <Terminal className="w-4 h-4 text-purple-400" />
+                      <Terminal className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                       <span className="text-sm font-semibold">{link.label}</span>
                     </a>
                   );
                 })}
               </div>
 
-              <div className="mt-auto pt-6 border-t border-white/[0.06]">
+              <div className="mt-auto pt-6 border-t border-card-border">
                 <a
                   href="#contact"
                   onClick={(e) => handleLinkClick(e, '#contact')}
-                  className="block w-full py-3 text-center text-sm font-semibold rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+                  className="block w-full py-3 text-center text-sm font-semibold rounded-xl bg-blue-600 text-white"
                 >
                   Hire Me
                 </a>

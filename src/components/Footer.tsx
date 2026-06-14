@@ -7,26 +7,26 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="relative border-t border-white/[0.06] bg-[#030014]/40 py-12">
+    <footer className="relative border-t border-card-border bg-card-bg/20 py-12">
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         
         {/* Logo and copyright */}
         <div className="flex flex-col items-center md:items-start gap-1">
-          <div className="text-sm font-bold text-white tracking-wide">
-            Ajisha <span className="text-blue-400">TP</span>
+          <div className="text-sm font-bold text-stone-900 dark:text-white tracking-wide">
+            AJISHA <span className="text-blue-600 dark:text-blue-400">TP</span>.
           </div>
-          <p className="text-[11px] text-slate-500">
+          <p className="text-[11px] text-stone-500 dark:text-slate-500">
             &copy; {new Date().getFullYear()} Ajisha TP. All rights reserved.
           </p>
         </div>
 
         {/* Social Links */}
-        <div className="flex items-center gap-4 text-slate-500">
+        <div className="flex items-center gap-4 text-stone-500 dark:text-slate-500">
           <a 
             href="https://github.com/ajishatp" 
             target="_blank" 
             rel="noreferrer" 
-            className="p-2 rounded-lg hover:bg-white/5 hover:text-white transition-colors"
+            className="p-2 rounded-lg hover:bg-stone-100 dark:hover:bg-white/5 hover:text-stone-900 dark:hover:text-white transition-colors"
             aria-label="GitHub"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
             href="https://www.linkedin.com/in/ajisha-tp-931018333?utm_source=share_via&utm_content=profile&utm_medium=member_android" 
             target="_blank" 
             rel="noreferrer" 
-            className="p-2 rounded-lg hover:bg-white/5 hover:text-white transition-colors"
+            className="p-2 rounded-lg hover:bg-stone-100 dark:hover:bg-white/5 hover:text-stone-900 dark:hover:text-white transition-colors"
             aria-label="LinkedIn"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -49,7 +49,7 @@ export const Footer: React.FC = () => {
           </a>
           <a 
             href="mailto:tpajisha@gmail.com" 
-            className="p-2 rounded-lg hover:bg-white/5 hover:text-white transition-colors"
+            className="p-2 rounded-lg hover:bg-stone-100 dark:hover:bg-white/5 hover:text-stone-900 dark:hover:text-white transition-colors"
             aria-label="Email"
           >
             <Mail className="w-5 h-5" />
@@ -59,7 +59,7 @@ export const Footer: React.FC = () => {
         {/* Back to top scroll button */}
         <button
           onClick={handleScrollToTop}
-          className="p-2.5 rounded-xl border border-white/[0.08] hover:border-white/20 bg-white/[0.01] hover:bg-white/[0.04] text-slate-400 hover:text-white transition-all group"
+          className="p-2.5 rounded-xl border border-card-border hover:bg-stone-100 dark:hover:bg-white/[0.04] bg-card-bg text-stone-500 dark:text-slate-400 hover:text-stone-900 dark:hover:text-white transition-all group cursor-pointer"
           aria-label="Scroll to top"
         >
           <ArrowUp className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />

@@ -105,23 +105,23 @@ export const Experience: React.FC = () => {
               {/* Title & Metadata */}
               <div className="flex flex-wrap justify-between items-start gap-4 mb-6 relative z-10">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                  <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400">
                     <Briefcase className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-lg sm:text-xl font-bold text-white tracking-wide">{job.role}</h4>
-                    <span className="text-sm font-semibold text-slate-400">{job.company} — <span className="text-xs">{job.location}</span></span>
+                    <h4 className="text-lg sm:text-xl font-bold text-stone-900 dark:text-white tracking-wide">{job.role}</h4>
+                    <span className="text-sm font-semibold text-stone-500 dark:text-slate-400">{job.company} — <span className="text-xs">{job.location}</span></span>
                   </div>
                 </div>
 
-                <div className="inline-flex items-center gap-2 text-xs font-semibold text-purple-400 bg-purple-500/10 border border-purple-500/20 px-3.5 py-1.5 rounded-full shrink-0">
+                <div className="inline-flex items-center gap-2 text-xs font-semibold text-purple-600 dark:text-purple-400 bg-purple-500/10 border border-purple-500/20 px-3.5 py-1.5 rounded-full shrink-0">
                   <Calendar className="w-3.5 h-3.5" />
                   {job.duration}
                 </div>
               </div>
 
               {/* Responsibilities Bullets */}
-              <ul className="space-y-3 mb-6 text-slate-400 text-xs sm:text-sm leading-relaxed relative z-10">
+              <ul className="space-y-3 mb-6 text-stone-500 dark:text-slate-400 text-xs sm:text-sm leading-relaxed relative z-10">
                 {job.bullets.map((bullet, bIdx) => (
                   <li key={bIdx} className="flex gap-3 items-start">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />

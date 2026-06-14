@@ -97,24 +97,24 @@ export const Leadership: React.FC = () => {
               <div>
                 {/* Header: Icon, Title & Role */}
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] shrink-0">
+                  <div className="p-3 rounded-xl bg-stone-50 dark:bg-white/[0.03] border border-card-border shrink-0">
                     {act.icon}
                   </div>
                   <div>
-                    <h4 className="text-base sm:text-lg font-bold text-white tracking-wide">{act.title}</h4>
-                    <span className="text-xs font-semibold text-slate-400">{act.role}</span>
+                    <h4 className="text-base sm:text-lg font-bold text-stone-900 dark:text-white tracking-wide">{act.title}</h4>
+                    <span className="text-xs font-semibold text-stone-500 dark:text-slate-400">{act.role}</span>
                   </div>
                 </div>
 
                 {/* Short Bio */}
-                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                <p className="text-stone-500 dark:text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
                   {act.desc}
                 </p>
 
                 {/* Highlights List */}
                 <ul className="space-y-2 mb-6">
                   {act.highlights.map((item, hiIdx) => (
-                    <li key={hiIdx} className="flex gap-2.5 items-start text-xs text-slate-300">
+                    <li key={hiIdx} className="flex gap-2.5 items-start text-xs text-stone-600 dark:text-slate-300">
                       <span className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 shrink-0" />
                       <span>{item}</span>
                     </li>
