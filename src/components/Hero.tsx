@@ -61,7 +61,7 @@ export const Hero: React.FC = () => {
             variants={itemVariants}
             className="flex items-center gap-3 mb-6"
           >
-            <span className="w-8 h-[2px] bg-blue-600 dark:bg-blue-400 shrink-0" />
+            <span className="w-8 h-[2px] bg-accent-blue shrink-0" />
             <span className="text-xs sm:text-sm uppercase tracking-widest text-stone-500 dark:text-slate-400 font-bold">
               Computer Science Student &bull; GEC Palakkad
             </span>
@@ -72,7 +72,7 @@ export const Hero: React.FC = () => {
             variants={itemVariants}
             className="text-5xl sm:text-7xl font-extrabold tracking-tight text-stone-900 dark:text-white mb-6 leading-none"
           >
-            AJISHA <span className="text-blue-600 dark:text-blue-400">TP</span>
+            AJISHA <span className="text-accent-blue">TP</span>
           </motion.h1>
 
           {/* Tagline code-styled */}
@@ -80,7 +80,7 @@ export const Hero: React.FC = () => {
             variants={itemVariants}
             className="font-mono text-sm sm:text-base text-stone-600 dark:text-slate-400 mb-8 flex items-center gap-1.5"
           >
-            <span className="text-blue-600 dark:text-blue-400 font-bold">~ /</span> I turn ideas into software
+            <span className="text-accent-blue font-bold">~ /</span> I turn ideas into software
           </motion.p>
 
           {/* CTA Buttons */}
@@ -90,7 +90,7 @@ export const Hero: React.FC = () => {
           >
             <button
               onClick={() => handleScrollToSection('#projects')}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-md shadow-blue-500/10 hover:shadow-blue-500/25 active:scale-98 cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent-blue hover:opacity-90 text-white font-semibold text-sm transition-all shadow-md shadow-blue-500/10 hover:shadow-blue-500/25 active:scale-98 cursor-pointer"
             >
               View Projects ↓
             </button>
@@ -109,15 +109,15 @@ export const Hero: React.FC = () => {
             className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full max-w-xl"
           >
             <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-card-border bg-pill-bg shadow-sm">
-              <span className="w-2.5 h-2.5 rounded-full bg-blue-600 dark:bg-blue-400 shrink-0" />
+              <span className="w-2.5 h-2.5 rounded-full bg-accent-blue shrink-0" />
               <span className="text-xs sm:text-sm font-semibold text-stone-700 dark:text-slate-300">4+ Projects Built</span>
             </div>
             <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-card-border bg-pill-bg shadow-sm">
-              <span className="w-2.5 h-2.5 rounded-full bg-blue-600 dark:bg-blue-400 shrink-0" />
+              <span className="w-2.5 h-2.5 rounded-full bg-accent-blue shrink-0" />
               <span className="text-xs sm:text-sm font-semibold text-stone-700 dark:text-slate-300">µLearn Coordinator</span>
             </div>
             <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-card-border bg-pill-bg shadow-sm">
-              <span className="w-2.5 h-2.5 rounded-full bg-blue-600 dark:bg-blue-400 shrink-0" />
+              <span className="w-2.5 h-2.5 rounded-full bg-accent-blue shrink-0" />
               <span className="text-xs sm:text-sm font-semibold text-stone-700 dark:text-slate-300">4th Year CS</span>
             </div>
           </motion.div>
