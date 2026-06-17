@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar, CheckCircle2 } from 'lucide-react';
+import { Calendar, CheckCircle2, Sparkles, Shield, Database, Cpu } from 'lucide-react';
 
 interface Job {
   role: string;
@@ -9,6 +9,8 @@ interface Job {
   duration: string;
   bullets: string[];
   skillsLearned: string[];
+  icon: React.ReactNode;
+  colorClass: string;
 }
 
 const experiences: Job[] = [
@@ -16,14 +18,14 @@ const experiences: Job[] = [
     role: "µLearn Project Coordinator Intern",
     company: "GTech µLearn",
     location: "Kerala (Hybrid)",
-    duration: "Oct 2024 - June 2026",
+    duration: "June 2026",
     bullets: [
       "Coordinate student communities across multiple technical chapters, aligning academic interest with industry skills.",
-      "Plan and execute student events, hackathons, and bootcamp schedules, facilitating hands-on coding environments for 500+ students.",
-      "Manage project documentation, metric reporting, and student performance dashboards for internal reviews.",
-      "Facilitate direct channels of mentorship and developer resources between student chapters and industry experts."
+      "Plan and execute student events, hackathons, and bootcamp schedules, facilitating hands-on coding environments for 500+ students."
     ],
-    skillsLearned: []
+    skillsLearned: [],
+    icon: <Sparkles className="w-5 h-5 text-indigo-600" />,
+    colorClass: "bg-indigo-50 border-indigo-150"
   },
   {
     role: "Cybersecurity Virtual Intern",
@@ -31,23 +33,25 @@ const experiences: Job[] = [
     location: "Virtual",
     duration: "July 2025 - August 2025",
     bullets: [
-      "Completed a 2-month virtual internship program focusing on cybersecurity and defensive operations.",
-      "Developed a ransomware simulator to study threat propagation, encryption algorithms, and mock security response workflows.",
+      "Developed a ransomware simulator to study threat propagation, encryption algorithms, and mock security response workflows during my C-DAC internship.",
       "Explored methodologies to identify vulnerabilities and secure host environments."
     ],
-    skillsLearned: []
+    skillsLearned: [],
+    icon: <Shield className="w-5 h-5 text-emerald-600" />,
+    colorClass: "bg-emerald-50 border-emerald-150"
   },
   {
     role: "Digital Systems Engineering Intern",
     company: "Southern Railway",
     location: "Palakkad, Kerala",
-    duration: "July 2024 - Aug 2024",
+    duration: "June 2026",
     bullets: [
-      "Studied digital workflow systems, exploring optimizations for manual process structures across railway database modules.",
       "Formulated concepts for workflow automation and data tracking portals to replace paper-based inventory structures.",
       "Analyzed local networks and server cabinets, outlining steps for secure, high-throughput digital data routing and storage architectures."
     ],
-    skillsLearned: []
+    skillsLearned: [],
+    icon: <Database className="w-5 h-5 text-blue-605" />,
+    colorClass: "bg-blue-50 border-blue-150"
   },
   {
     role: "IoT Intern",
@@ -58,7 +62,9 @@ const experiences: Job[] = [
       "Gained practical exposure to IoT (Internet of Things) concepts, hardware architectures, and sensor communications.",
       "Tinkered with microcontroller boards and explored smart automation interfaces."
     ],
-    skillsLearned: []
+    skillsLearned: [],
+    icon: <Cpu className="w-5 h-5 text-purple-600" />,
+    colorClass: "bg-purple-50 border-purple-150"
   }
 ];
 
@@ -73,7 +79,7 @@ export const Experience: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xs uppercase tracking-widest text-blue-400 font-bold mb-3"
+            className="text-xs uppercase tracking-widest text-blue-600 font-bold mb-3"
           >
             Professional Path
           </motion.h2>
@@ -97,31 +103,28 @@ export const Experience: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="p-6 sm:p-8 rounded-2xl glass-card relative overflow-hidden glow-border"
+              className="p-6 sm:p-8 rounded-2xl glass-card relative overflow-hidden border border-card-border shadow-sm"
             >
-              {/* Background gradient flare */}
-              <div className="absolute -top-24 -left-24 w-48 h-48 bg-gradient-to-br from-blue-500/5 to-purple-500/5 blur-3xl rounded-full pointer-events-none" />
-
               {/* Title & Metadata */}
               <div className="flex flex-wrap justify-between items-start gap-4 mb-6 relative z-10">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400">
-                    <Briefcase className="w-5 h-5" />
+                  <div className={`p-3 rounded-xl border ${job.colorClass}`}>
+                    {job.icon}
                   </div>
                   <div>
-                    <h4 className="text-lg sm:text-xl font-bold text-stone-900 dark:text-white tracking-wide">{job.role}</h4>
-                    <span className="text-sm font-semibold text-stone-500 dark:text-slate-400">{job.company} — <span className="text-xs">{job.location}</span></span>
+                    <h4 className="text-lg sm:text-xl font-bold text-stone-900 tracking-wide">{job.role}</h4>
+                    <span className="text-sm font-semibold text-stone-500">{job.company} — <span className="text-xs">{job.location}</span></span>
                   </div>
                 </div>
 
-                <div className="inline-flex items-center gap-2 text-xs font-semibold text-purple-600 dark:text-purple-400 bg-purple-500/10 border border-purple-500/20 px-3.5 py-1.5 rounded-full shrink-0">
+                <div className="inline-flex items-center gap-2 text-xs font-semibold text-purple-700 bg-purple-500/10 border border-purple-500/20 px-3.5 py-1.5 rounded-full shrink-0">
                   <Calendar className="w-3.5 h-3.5" />
                   {job.duration}
                 </div>
               </div>
 
               {/* Responsibilities Bullets */}
-              <ul className="space-y-3 mb-6 text-stone-500 dark:text-slate-400 text-xs sm:text-sm leading-relaxed relative z-10">
+              <ul className="space-y-3 mb-6 text-stone-500 text-xs sm:text-sm leading-relaxed relative z-10">
                 {job.bullets.map((bullet, bIdx) => (
                   <li key={bIdx} className="flex gap-3 items-start">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
@@ -129,7 +132,6 @@ export const Experience: React.FC = () => {
                   </li>
                 ))}
               </ul>
-
 
             </motion.div>
           ))}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon, Terminal } from 'lucide-react';
+import { Menu, X, Terminal } from 'lucide-react';
 
 interface NavLink {
   label: string;
@@ -14,7 +14,6 @@ const navLinks: NavLink[] = [
   { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Leadership', href: '#leadership' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -22,14 +21,7 @@ export const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('portfolio-theme');
-      if (saved === 'dark' || saved === 'light') return saved;
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    return 'dark';
-  });
+
 
   // Scrollspy & Glass navbar toggle
   useEffect(() => {
@@ -55,19 +47,6 @@ export const Navbar: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const toggleTheme = () => {
-    const nextTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(nextTheme);
-    localStorage.setItem('portfolio-theme', nextTheme);
-    if (nextTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-  };
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -101,13 +80,15 @@ export const Navbar: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo / Brand */}
-          <a 
-            href="#home" 
-            onClick={(e) => handleLinkClick(e, '#home')}
-            className="flex items-center gap-1.5 text-xl font-bold tracking-wider text-text-primary group"
-          >
-            <span>AJISHA <span className="text-blue-600 dark:text-blue-400">TP</span><span className="text-blue-600 dark:text-blue-400 animate-pulse">.</span></span>
-          </a>
+          <div className="flex-1 flex items-center">
+            <a 
+              href="#home"
+              onClick={(e) => handleLinkClick(e, '#home')}
+              className="text-sm sm:text-base font-extrabold text-stone-900 tracking-wider hover:opacity-80 transition-opacity"
+            >
+              AJISHA <span className="text-blue-600">TP</span>.
+            </a>
+          </div>
 
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center gap-6">
@@ -138,14 +119,7 @@ export const Navbar: React.FC = () => {
               })}
             </nav>
 
-            {/* Theme Toggle Button */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full border border-card-border bg-card-bg hover:bg-stone-100 dark:hover:bg-white/5 text-stone-600 dark:text-slate-400 hover:text-stone-900 dark:hover:text-white transition-all shadow-sm active:scale-95 cursor-pointer"
-              aria-label="Toggle Theme Mode"
-            >
-              {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-blue-600" />}
-            </button>
+
 
             {/* CTA Header Actions */}
             <a
@@ -159,14 +133,7 @@ export const Navbar: React.FC = () => {
 
           {/* Mobile Menu & Theme Toggle */}
           <div className="flex lg:hidden items-center gap-2">
-            {/* Theme Toggle Button for Mobile */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full border border-card-border bg-card-bg hover:bg-stone-100 dark:hover:bg-white/5 text-stone-600 dark:text-slate-400 hover:text-stone-900 dark:hover:text-white transition-all shadow-sm active:scale-95 cursor-pointer"
-              aria-label="Toggle Theme Mode"
-            >
-              {theme === 'dark' ? <Sun className="w-4.5 h-4.5 text-amber-400" /> : <Moon className="w-4.5 h-4.5 text-blue-600" />}
-            </button>
+
 
             {/* Mobile Menu Toggle button */}
             <button

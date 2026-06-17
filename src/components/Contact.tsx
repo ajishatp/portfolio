@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, Send, CheckCircle2 } from 'lucide-react';
+import { Mail, Send, CheckCircle2, MapPin } from 'lucide-react';
+
+// To receive emails in the background without opening a mail client, 
+// get a free access key from https://web3forms.com and paste it here.
+const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -39,17 +43,49 @@ export const Contact: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setStatus('submitting');
-    
-    // Simulate API call
-    setTimeout(() => {
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    }, 1500);
+
+    if (WEB3FORMS_ACCESS_KEY === "YOUR_ACCESS_KEY_HERE") {
+      // Professional Mock: Simulate background sending inside the page without opening other apps
+      setTimeout(() => {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      }, 1500);
+      return;
+    }
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `New Portfolio Message from ${formData.name}`
+        })
+      });
+
+      const result = await response.json();
+      if (response.status === 200 && result.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        console.error("Submission error:", result);
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error("Network error submitting form:", error);
+      setStatus('error');
+    }
   };
 
   return (
@@ -134,15 +170,21 @@ export const Contact: React.FC = () => {
                   </div>
                 </a>
 
-                <a href="tel:+919876543210" className="flex items-center gap-4 text-stone-600 dark:text-slate-400 hover:text-stone-900 dark:hover:text-white transition-colors group">
-                  <div className="p-3 rounded-xl bg-stone-50 dark:bg-white/[0.02] border border-card-border text-emerald-600 dark:text-emerald-400 group-hover:scale-105 transition-transform">
-                    <Phone className="w-5 h-5" />
+                <a 
+                  href="https://www.google.com/maps/search/?api=1&query=Kunnumpuram+Malappuram+District+Kerala" 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="flex items-center gap-4 text-stone-600 dark:text-slate-400 hover:text-stone-900 dark:hover:text-white transition-colors group cursor-pointer"
+                >
+                  <div className="p-3 rounded-xl bg-stone-50 dark:bg-white/[0.02] border border-card-border text-red-500 dark:text-red-400 group-hover:scale-105 transition-transform flex items-center justify-center">
+                    <MapPin className="w-5 h-5" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[10px] uppercase font-bold text-stone-400 dark:text-slate-500 tracking-wider">Phone</span>
-                    <span className="text-sm font-semibold">+91 98765 43210</span>
+                    <span className="text-[10px] uppercase font-bold text-stone-400 dark:text-slate-500 tracking-wider">Location</span>
+                    <span className="text-sm font-semibold">Kunnumpuram, Malappuram District</span>
                   </div>
                 </a>
+
               </div>
             </div>
 
@@ -242,6 +284,16 @@ export const Contact: React.FC = () => {
                     >
                       <CheckCircle2 className="w-4 h-4" />
                       Message sent successfully!
+                    </motion.div>
+                  )}
+                  {status === 'error' && (
+                    <motion.div 
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0 }}
+                      className="inline-flex items-center gap-2 text-xs font-bold text-red-600 dark:text-red-400 bg-red-500/10 border border-red-500/20 px-3 py-2 rounded-xl"
+                    >
+                      Failed to send message. Please try again.
                     </motion.div>
                   )}
                 </AnimatePresence>

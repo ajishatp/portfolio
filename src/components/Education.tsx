@@ -18,9 +18,7 @@ const educationTimeline: AcademicEntry[] = [
     grade: "CGPA: 8.2 (Pursuing)",
     details: [
       "Specializing in Software Development, Artificial Intelligence, and Modern Web Technologies.",
-      "Strong foundation in Data Structures, Algorithms, Database Management Systems, Computer Networks, and Software Engineering.",
-      "Passionate about building innovative software solutions and AI-powered applications.",
-      "Actively involved in technical communities, hackathons, and collaborative learning initiatives."
+      "Strong foundation in core CS principles (Data Structures, Algorithms, DBMS) and software engineering paradigms."
     ]
   },
   {
@@ -29,10 +27,8 @@ const educationTimeline: AcademicEntry[] = [
     duration: "2020 – 2022",
     grade: "Percentage: 94%",
     details: [
-      "Specialized in Biology, Physics, Chemistry, and Mathematics.",
-      "Developed strong analytical, problem-solving, and scientific reasoning skills.",
-      "Maintained excellent academic performance throughout higher secondary education.",
-      "Built a solid foundation for pursuing engineering and technology-focused studies."
+      "Specialized in Biology, Physics, Chemistry, and Mathematics (Science stream).",
+      "Maintained high academic performance, securing a final score of 94%."
     ]
   }
 ];

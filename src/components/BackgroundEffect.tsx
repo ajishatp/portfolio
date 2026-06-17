@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
+interface Ripple {
+  id: number;
+  x: number;
+  y: number;
+}
+
 export const BackgroundEffect: React.FC = () => {
   const [mounted, setMounted] = useState(false);
+  const [ripples, setRipples] = useState<Ripple[]>([]);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -20,9 +27,21 @@ export const BackgroundEffect: React.FC = () => {
       mouseY.set(e.clientY - 200);
     };
 
+    const handleGlobalClick = (e: MouseEvent) => {
+      const newRipple = {
+        id: Date.now() + Math.random(),
+        x: e.clientX,
+        y: e.clientY
+      };
+      setRipples(prev => [...prev, newRipple].slice(-8));
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('click', handleGlobalClick);
+
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('click', handleGlobalClick);
     };
   }, [mouseX, mouseY]);
 
@@ -30,10 +49,7 @@ export const BackgroundEffect: React.FC = () => {
 
   return (
     <div className="fixed inset-0 -z-50 w-full h-full overflow-hidden bg-bg-theme transition-colors duration-300 select-none pointer-events-none">
-      {/* Moving Background Grid */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.06] animate-grid-move" />
-
-      {/* Radiant glow spots that stay fixed (extremely subtle for professional feel) */}
+      {/* Radiant glow spots that stay fixed */}
       <div 
         className="glow-orb bg-blue-600/10 dark:bg-blue-600/5 w-[500px] h-[500px] -left-40 top-20 animate-pulse-glow" 
         style={{ animationDuration: '8s' }}
@@ -47,7 +63,7 @@ export const BackgroundEffect: React.FC = () => {
         style={{ animationDuration: '9s' }}
       />
 
-      {/* Desktop Mouse Tracking Glow (Only displays on devices that support mouse pointer hover) */}
+      {/* Desktop Mouse Tracking Glow */}
       <motion.div
         className="hidden md:block absolute w-[400px] h-[400px] rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-[80px] pointer-events-none mix-blend-multiply dark:mix-blend-screen"
         style={{
@@ -55,6 +71,48 @@ export const BackgroundEffect: React.FC = () => {
           y: glowY,
         }}
       />
+
+      {/* Interactive Ripple and Spark particles (Aesthetic click effects) */}
+      {ripples.map(ripple => (
+        <React.Fragment key={ripple.id}>
+          {/* Ring ripple */}
+          <motion.div
+            initial={{ opacity: 0.6, scale: 0 }}
+            animate={{ opacity: 0, scale: 3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            onAnimationComplete={() => {
+              setRipples(prev => prev.filter(r => r.id !== ripple.id));
+            }}
+            className="absolute rounded-full border border-blue-500/30 bg-blue-500/5 pointer-events-none"
+            style={{
+              left: ripple.x - 20,
+              top: ripple.y - 20,
+              width: 40,
+              height: 40,
+            }}
+          />
+          {/* Sparkles burst */}
+          {[...Array(5)].map((_, idx) => {
+            const angle = (idx * 72) + (Math.random() * 15 - 7.5);
+            const distance = 35 + Math.random() * 35;
+            const targetX = Math.cos((angle * Math.PI) / 180) * distance;
+            const targetY = Math.sin((angle * Math.PI) / 180) * distance;
+            return (
+              <motion.div
+                key={idx}
+                initial={{ x: ripple.x, y: ripple.y, scale: 1, opacity: 0.8 }}
+                animate={{ x: ripple.x + targetX, y: ripple.y + targetY, scale: 0, opacity: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="absolute w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 pointer-events-none"
+                style={{
+                  left: -3,
+                  top: -3,
+                }}
+              />
+            );
+          })}
+        </React.Fragment>
+      ))}
 
       {/* Fine-grain vignette overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_0%,var(--bg-theme)_80%)]" />

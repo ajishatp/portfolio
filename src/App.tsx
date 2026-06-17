@@ -7,9 +7,9 @@ import { Education } from './components/Education';
 import { Experience } from './components/Experience';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
-import { Leadership } from './components/Leadership';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { Chatbot } from './components/Chatbot';
 
 function App() {
   return (
@@ -28,12 +28,14 @@ function App() {
         <Experience />
         <Skills />
         <Projects />
-        <Leadership />
         <Contact />
       </main>
 
       {/* Professional Footer */}
       <Footer />
+
+      {/* Interactive Chatbot */}
+      <Chatbot />
     </div>
   );
 }
