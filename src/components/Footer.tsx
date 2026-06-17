@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
             </svg>
           </a>
           <a 
-            href="https://www.linkedin.com/in/ajisha-tp-931018333/" 
+            href="https://www.linkedin.com/in/ajisha-tp-931018333?utm_source=share_via&utm_content=profile&utm_medium=member_android" 
             target="_blank" 
             rel="noreferrer" 
             className="p-2 rounded-lg hover:bg-stone-100 dark:hover:bg-white/5 hover:text-stone-900 dark:hover:text-white transition-colors"
