@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Send, CheckCircle2, MapPin } from 'lucide-react';
 
-// To receive emails in the background without opening a mail client, 
-// get a free access key from https://web3forms.com and paste it here.
-const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
-
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState({ name: '', email: '', message: '' });
@@ -49,33 +45,23 @@ export const Contact: React.FC = () => {
 
     setStatus('submitting');
 
-    if (WEB3FORMS_ACCESS_KEY === "YOUR_ACCESS_KEY_HERE") {
-      // Professional Mock: Simulate background sending inside the page without opening other apps
-      setTimeout(() => {
-        setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-      }, 1500);
-      return;
-    }
-
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('https://formsubmit.co/ajax/tpajisha@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
           name: formData.name,
           email: formData.email,
           message: formData.message,
-          subject: `New Portfolio Message from ${formData.name}`
+          _subject: `New Portfolio Message from ${formData.name}`
         })
       });
 
       const result = await response.json();
-      if (response.status === 200 && result.success) {
+      if (response.ok && (result.success === "true" || result.success === true)) {
         setStatus('success');
         setFormData({ name: '', email: '', message: '' });
       } else {
